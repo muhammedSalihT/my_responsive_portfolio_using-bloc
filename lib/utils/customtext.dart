@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_portfolio/utils/responsive.dart';
 
 class CustomTextWidget extends StatelessWidget {
   const CustomTextWidget(
@@ -6,19 +7,29 @@ class CustomTextWidget extends StatelessWidget {
       required this.text,
       this.textSize,
       this.textColor,
-      this.textWidth})
+      this.textWidth,
+      this.textOverFlow,
+      this.textHeight})
       : super(key: key);
 
   final String text;
+  final TextOverflow? textOverFlow;
   final double? textSize;
   final Color? textColor;
   final FontWeight? textWidth;
+  final double? textHeight;
   @override
   Widget build(BuildContext context) {
+    Size size = Responsive.getScreenSize(context);
     return Text(
+      overflow: textOverFlow,
       text,
       style: TextStyle(
-          color: textColor, fontSize: textSize, fontWeight: textWidth),
+          overflow: textOverFlow,
+          height: textHeight,
+          color: textColor ?? Colors.black,
+          fontSize: textSize ?? 20,
+          fontWeight: textWidth),
     );
   }
 }

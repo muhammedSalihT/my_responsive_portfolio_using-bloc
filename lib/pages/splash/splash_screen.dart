@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_portfolio/blocs/splash/splash_bloc.dart';
+import 'package:responsive_portfolio/constents/const_colors.dart';
 import 'package:responsive_portfolio/constents/text_const.dart';
 import 'package:responsive_portfolio/pages/home/home_screen.dart';
 import 'package:responsive_portfolio/utils/responsive.dart';
@@ -17,8 +18,8 @@ class SplashScreen extends StatelessWidget {
       body: BlocConsumer<SplashBloc, SplashState>(
         listener: (context, state) {
           if (state is Loaded) {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const HomeScreen()));
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => HomeScreen()));
           }
         },
         builder: (context, state) {
@@ -27,16 +28,20 @@ class SplashScreen extends StatelessWidget {
             children: [
               Center(
                 child: animatedText(
-                    size: size,
-                    text: TextConst.devName,
-                    textStyle: TextStyle(fontSize: size.width * .07)),
+                  size: size,
+                  text: TextConst.devName,
+                  textStyle: TextStyle(
+                      fontSize: size.width * .07, color: AppColors.flutterBlue),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.only(left: size.width * .28),
                 child: animatedText(
-                    size: size,
-                    text: TextConst.subTitle,
-                    textStyle: TextStyle(fontSize: size.width * .04)),
+                  size: size,
+                  text: TextConst.subTitle,
+                  textStyle: TextStyle(
+                      fontSize: size.width * .04, color: AppColors.flutterBlue),
+                ),
               ),
             ],
           );
